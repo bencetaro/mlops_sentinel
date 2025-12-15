@@ -1,5 +1,5 @@
 # MLOps pipeline using multiple services (MLflow, S3, Prometheus, Grafana)
-### Full ml lifecycle (Training → Registry → Inference)
+### Full ML life-cycle (Training → Registry → Inference)
 
 This repository demonstrates a complete MLOps workflow for training, tracking, registering, and deploying a Pytorch segmentation model.
 
@@ -10,7 +10,7 @@ This repository demonstrates a complete MLOps workflow for training, tracking, r
 - Grafana — metrics visualization
 - Docker Compose — reproducible orchestration
 
-# 📁 Project Structure:
+## 📁 Project Structure:
     .
     ├── docker-compose.yml
     ├── docker/
@@ -19,18 +19,22 @@ This repository demonstrates a complete MLOps workflow for training, tracking, r
     │   ├── main.py
     │   ├── trainer.py
     │   ├── model.py
-    │   └── dataset.py
+    │   ├── dataset.py
+    │   └── etc...
     ├── inference/
     │   ├── UNet_inference.py
-    │   └── inf_config.yml
+    │   ├── inf_config.yml
+    │   └── etc...
     ├── monitoring/
     │   ├── prometheus.yml
     │   └── grafana/
     ├── create_bucket.py
+    ├── requirements.txt
+    ├── Makefile
     ├── .env
     └── README.md
 
-# 🔐 Environment variables:
+## 🔐 Environment variables:
 Create a similar .env file in the project root:
 
     MLFLOW_TRACKING_URI=http://mlflow:5000
@@ -40,9 +44,8 @@ Create a similar .env file in the project root:
     AWS_DEFAULT_REGION=us-east-1
     AWS_BUCKET_NAME=mlflow-artifacts
 
-# 🚀 Setup guide:
-1. 
-
+## 🚀 Setup guide:
+(Most of the )
 
 
 

@@ -2,6 +2,9 @@
 ### Full ML life-cycle (Training → Registry → Inference)
 
 This repository demonstrates a complete MLOps workflow for training, tracking, registering, and deploying a Pytorch segmentation model.
+<details><summary>Click to show</summary>
+**Note:** This project currently supports cpu only training, and the experiment shown in the follow up is only a 1 epoch train, but the goal was here to demonstrate the learning process of my MLOps skills.
+</details>
 
 ## Featuring:
 - MLflow — experiment tracking & model registry

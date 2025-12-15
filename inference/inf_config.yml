@@ -1,0 +1,7 @@
+device: "cpu"
+model_uri: "models:/unet_model/Production" # for specific version: "runs:/059abd05dad2498894289aacae22fc06/unet_model"
+input_folder: "inference/input_tci"
+output_folder: "inference/predictions"
+batch_size: 8
+img_size: 201
+crop_box: [0, 0, 10854, 10854]

@@ -1,0 +1,15 @@
+device: cpu
+data:
+  train_images: ./training/data/train_images
+  train_labels: ./training/data/train_labels
+  test_images: ./training/data/test_images
+  test_labels: ./training/data/test_labels
+batch_size: 8
+epochs: 1
+learning_rate: 0.01
+lr_scheduler:
+  step_size: 3
+  gamma: 0.5
+img_size: [201, 201]
+out_dir: ./training/outputs
+experiment_name: sentinel_002

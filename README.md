@@ -68,7 +68,7 @@ Create a similar .env file in the project root:
    docker exec mlflow python -m training.main
    ```
 5. After train we should have the model saved in the bucket,
-   to make sure you can run:
+   to make sure you can list stored artifacts:
    ```shell
     docker exec -it minio mc ls local
    ```
@@ -76,26 +76,26 @@ Create a similar .env file in the project root:
    ```shell
    docker exec -it minio mc alias set local http://localhost:9000 $MINIO_ROOT_USER $MINIO_ROOT_PASSWORD
    ```
-6. Next we can make visualizations of the metrics collected from training and processing logs with Grafana:
+7. Next we can make visualizations of the metrics collected from training and processing logs with Grafana:
     - Open http://localhost:3000 in browser,
     - Default credentials: admin/admin,
     - Add Prometheus connection like 'Connection → Data sources',
     - Now create a dashboard under 'Dashboards', similarly shown in the following image:
 
-      file://home/user/Pictures/sample_grafana.png
+    ![Grafana sample](https://github.com/bencetaro/mlops_sentinel/blob/main/images/sample_grafana.png)
 
-7. Run model inference:
+8. Run model inference:
     In order to run inference correctly, the input folder (./mlops_sentinel/inference/input_tci) must contain a Sentinel 2 TCI file. The script will do the rest with preprocessing, predicting and postprocessing the output. It can be initiated like:
    ```shell
    docker exec mlflow python -m inference.UNet_inference
    ```
-   Notably, this is a registry-based inference pipeline, meaning that we store the model in the MLflow archive and can retrain or replace it anytime.
+   Notably, this is a registry-based inference pipeline, meaning that inference always loads the currently promoted 'Production' model from the MLflow model registry, allowing safe replacement via retraining and re-staging without code changes.
 
 ## ✅ What this project demonstrates:
 
 ✔ Reproducible training with Docker
 
-✔ Centralized experiment tracking
+✔ Experiment tracking with MLflow
 
 ✔ S3-backed artifact storage
 
@@ -104,8 +104,4 @@ Create a similar .env file in the project root:
 ✔ Metrics monitoring with Prometheus
 
 ✔ Visualization with Grafana
-
-✔ Registry-based inference
-
-
 

@@ -59,33 +59,53 @@ Create a similar .env file in the project root:
    ```shell
    docker compose logs mlflow -f --tail=30
    ```  
-4. Create the MinIO bucket (required once):
+3. Create the MinIO bucket (required once):
    ```shell
    docker exec -it mlflow python create_bucket.py
    ```
-5. Run training:
+4. Run training:
    ```shell
    docker exec mlflow python -m training.main
    ```
-6. After train we should have the model saved in the bucket,
-   to make sure you can:
-   ... continue...
-   
+5. After train we should have the model saved in the bucket,
+   to make sure you can run:
    ```shell
-   docker exec -it mlflow python create_bucket.py
+    docker exec -it minio mc ls local
    ```
-8. fsaf
+   ... if authentication is necessary run:
    ```shell
-   docker exec -it mlflow python create_bucket.py
+   docker exec -it minio mc alias set local http://localhost:9000 $MINIO_ROOT_USER $MINIO_ROOT_PASSWORD
    ```
-   
+6. Next we can make visualizations of the metrics collected from training and processing logs with Grafana:
+    - Open http://localhost:3000 in browser,
+    - Default credentials: admin/admin,
+    - Add Prometheus connection like 'Connection → Data sources',
+    - Now create a dashboard under 'Dashboards', similarly shown in the following image:
 
+      file://home/user/Pictures/sample_grafana.png
 
+7. Run model inference:
+    In order to run inference correctly, the input folder (./mlops_sentinel/inference/input_tci) must contain a Sentinel 2 TCI file. The script will do the rest with preprocessing, predicting and postprocessing the output. It can be initiated like:
+   ```shell
+   docker exec mlflow python -m inference.UNet_inference
+   ```
+   Notably, this is a registry-based inference pipeline, meaning that we store the model in the MLflow archive and can retrain or replace it anytime.
 
+## ✅ What this project demonstrates:
 
+✔ Reproducible training with Docker
 
+✔ Centralized experiment tracking
 
+✔ S3-backed artifact storage
 
+✔ Automatic model registration & staging
+
+✔ Metrics monitoring with Prometheus
+
+✔ Visualization with Grafana
+
+✔ Registry-based inference
 
 
 

@@ -1,9 +1,9 @@
-# MLOps pipeline using multiple services (MLflow, S3, Prometheus, Grafana)
-### Full ML life-cycle (Training → Registry → Inference)
+# MLOps pipeline using multiple services
+### Full ML life-cycle (training → registry → inference)
 
 This repository demonstrates a complete MLOps workflow for training, tracking, registering, and deploying a Pytorch segmentation model.
 
-**Note:** This project currently supports cpu only training, and the experiment shown in the follow up is only a 1 epoch train, but the goal was here to demonstrate the learning process of my MLOps skills.
+**Note:** This demo project currently supports CPU-only training.
 
 ## Featuring:
 - MLflow — experiment tracking & model registry

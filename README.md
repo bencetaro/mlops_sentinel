@@ -1,4 +1,4 @@
-# MLOps pipeline using multiple services
+# MLOps Infrastructure For Satellite Imagery
 ### Full ML life-cycle (training → registry → inference)
 
 This repository demonstrates a complete MLOps workflow for training, tracking, registering, and deploying a Pytorch segmentation model.
